@@ -16,15 +16,15 @@ exports.limit = function (version) {
   return function (req, res, next) {
     var header;
 
-    res.header(req.apogee.header, version.toString());
+    res.header(req.apogee.header, version);
 
     if (req.header(req.apogee.header)) {
       header = req.header(req.apogee.header);
     }
 
-    if (header && (version.toString() === header)) {
+    if (header && (version === header)) {
       return next();
-    } else if (!header && (version.toString() === req.apogee.default)) {
+    } else if (!header && (version === req.apogee.default)) {
       return next();
     }
 

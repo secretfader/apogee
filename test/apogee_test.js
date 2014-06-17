@@ -11,7 +11,7 @@ describe('API Versioning', function () {
 	});
 
 	it('should return the apogee header on response', function (done) {
-		this.app.get('/widgets', apogee.limit('1'), function (req, res) {
+		this.app.route('/widgets').all(apogee.limit('1')).get(function (req, res) {
 			res.json({ message: 'Version 1' });
 		});
 
@@ -27,17 +27,17 @@ describe('API Versioning', function () {
 	});
 
 	it('should respond to a specified version number', function (done) {
-		this.app.get('/widgets', apogee.limit('2'), function (req, res) {
+		this.app.route('/widgets').all(apogee.limit('2')).get(function (req, res) {
 			res.json({ message: 'Version 2' });
 		});
 
-		this.app.get('/widgets', apogee.limit('1'), function (req, res) {
+		this.app.route('/widgets').all(apogee.limit('1')).get(function (req, res) {
 			res.json({ message: 'Version 1' });
 		});
 
 		request(this.app)
 			.get('/widgets')
-			.set('X-apogee-version', '1')
+			.set('x-apogee-version', '1')
 			.expect(200)
 			.end(function (err, res) {
 				if (err) return done(err);
@@ -47,16 +47,17 @@ describe('API Versioning', function () {
 	});
 
 	it('should respond with the default if no version is supplied', function (done) {
-		this.app.get('/widgets', apogee.limit('2'), function (req, res) {
+		this.app.route('/widgets').all(apogee.limit('2')).get(function (req, res) {
 			res.json({ message: 'Version 2' });
 		});
 
-		this.app.get('/widgets', apogee.limit('1'), function (req, res) {
+		this.app.route('/widgets').all(apogee.limit('1')).get(function (req, res) {
 			res.json({ message: 'Version 1' });
 		});
 
 		request(this.app)
 			.get('/widgets')
+			.set('x-test', 'yes')
 			.expect(200)
 			.end(function (err, res) {
 				if (err) return done(err);
