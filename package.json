@@ -1,0 +1,23 @@
+{
+  "name": "apogee",
+  "description": "Build powerful, versioned APIs with Connect",
+  "author": {
+    "name": "Nicholas Young",
+    "email": "dev@originalmachine.com",
+    "url": "http://dev.originalmachine.com"
+  },
+  "version": "0.0.1",
+  "repository": "git://github.com/originalmachine/apogee.git",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "errorhandler": "^1.0.2",
+    "express": "^4.4.3",
+    "mocha": "^1.20.1",
+    "supertest": "^0.13.0"
+  },
+  "scripts": {
+    "test": "make test"
+  }
+}
