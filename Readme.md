@@ -4,12 +4,12 @@ You've built this fantastic API-driven application, hooked it into a fantastic [
 
 What if you want to slowly roll out new features, or change the content that's delivered at different endpoints? Never fear: building a versioned API on top of Express is easy with Apogee.
 
-Apex was developed by humans at [Original Machine](http://originalmachine.com), for their social jukebox/music licensing app, [Mixdown](http://mixdown.co), so you know it's stable &mdash; because we tossed it into production almost immediately!
+Apogee was developed by humans at [Original Machine](http://originalmachine.com), for their social jukebox/music licensing app, [Mixdown](http://mixdown.co), so you know it's stable &mdash; because we tossed it into production almost immediately!
 
 ## Installation
 
 ```
-npm install apex
+npm install apogee
 ```
 
 ## Usage
