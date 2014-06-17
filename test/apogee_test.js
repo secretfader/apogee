@@ -1,7 +1,7 @@
-var apogee		= require('../'),
-		request = require('supertest'),
-		assert	= require('assert'),
-		express = require('express');
+var apogee		= require('../')
+, 	request = require('supertest')
+, 	expect  = require('chai').expect
+, 	express = require('express');
 
 describe('API Versioning', function () {
 	beforeEach(function () {
@@ -12,41 +12,56 @@ describe('API Versioning', function () {
 
 	it('should return the apogee header on response', function (done) {
 		this.app.get('/widgets', apogee.limit('1'), function (req, res) {
-			res.send('Version 1');
+			res.json({ message: 'Version 1' });
 		});
 
 		request(this.app)
 			.get('/widgets')
 			.expect('x-apogee-version', '1')
-			.expect(200, done);
+			.expect(200)
+			.end(function (err, res) {
+				if (err) return done(err);
+				expect(res.body.message).to.equal('Version 1');
+				done();
+			});
 	});
 
 	it('should respond to a specified version number', function (done) {
 		this.app.get('/widgets', apogee.limit('2'), function (req, res) {
-			res.send('Version 2');
+			res.json({ message: 'Version 2' });
 		});
 
 		this.app.get('/widgets', apogee.limit('1'), function (req, res) {
-			res.send('Version 1');
+			res.json({ message: 'Version 1' });
 		});
 
 		request(this.app)
 			.get('/widgets')
-			.set('X-apogee-version', 1)
-			.expect(200, 'Version 1', done);
+			.set('X-apogee-version', '1')
+			.expect(200)
+			.end(function (err, res) {
+				if (err) return done(err);
+				expect(res.body.message).to.equal('Version 1');
+				done();
+			});
 	});
 
 	it('should respond with the default if no version is supplied', function (done) {
 		this.app.get('/widgets', apogee.limit('2'), function (req, res) {
-			res.send('Version 2');
+			res.json({ message: 'Version 2' });
 		});
 
 		this.app.get('/widgets', apogee.limit('1'), function (req, res) {
-			res.send('Version 1');
+			res.json({ message: 'Version 1' });
 		});
 
 		request(this.app)
 			.get('/widgets')
-			.expect(200, 'Version 1', done);
+			.expect(200)
+			.end(function (err, res) {
+				if (err) return done(err);
+				expect(res.body.message).to.equal('Version 1');
+				done();
+			});
 	});
 });
