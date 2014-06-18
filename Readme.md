@@ -18,7 +18,7 @@ npm install apogee
 var apogee = require('apogee')
 ,   app    = require('express')();
 
-app.use(apogee.config({ default: '1', header: 'X-API-Version' }));
+apogee.config({ default: '1', header: 'X-API-Version' });
 
 app.route('/')
   .all(apogee.limit('2'))
