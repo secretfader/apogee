@@ -6,10 +6,12 @@
     "email": "dev@originalmachine.com",
     "url": "http://dev.originalmachine.com"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "git://github.com/originalmachine/apogee.git",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
   "devDependencies": {
     "chai": "^1.9.1",
     "errorhandler": "^1.0.2",

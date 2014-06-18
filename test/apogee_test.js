@@ -3,6 +3,16 @@ var apogee		= require('../')
 , 	expect  = require('chai').expect
 , 	express = require('express');
 
+describe('Configuration', function () {
+	it('should default to the standard x-api-version header', function () {
+		expect(apogee.configuration.header).to.equal('X-API-Version');
+	});
+
+	it('should set the default version to undefined', function () {
+		expect(apogee.configuration.default).to.equal(undefined);
+	});
+});
+
 describe('API Versioning', function () {
 	beforeEach(function () {
 		this.app = express();
@@ -72,9 +82,11 @@ describe('API Versioning', function () {
 		app.route('/widgets').all(apogee.limit('v2')).get(function (req, res) {
 			res.json({ message: 'v2' });
 		});
+
 		app.route('/widgets').all(apogee.limit('v1')).get(function (req, res) {
 			res.json({ message: 'v1' });
 		});
+
 		app.use(require('errorhandler')());
 
 		request(app)

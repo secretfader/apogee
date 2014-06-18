@@ -1,8 +1,19 @@
+var _ = require('lodash');
+
+exports.configuration = {
+  header: 'X-API-Version'
+};
+
 exports.config = function (options) {
-  exports.configuration = options || {};
+  options = options || {};
+  exports.configuration = _.extend(exports.configuration, options);
 };
 
 exports.limit = function (version) {
+  if ('string' !== typeof(version)) {
+    throw new Error('Please supply a version for this route.');
+  }
+  
   return function (req, res, next) {
     var header;
 
