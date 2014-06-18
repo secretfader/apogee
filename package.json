@@ -6,7 +6,7 @@
     "email": "dev@originalmachine.com",
     "url": "http://dev.originalmachine.com"
   },
-  "version": "0.0.2",
+  "version": "1.0.0",
   "repository": "git://github.com/originalmachine/apogee.git",
   "main": "index.js",
   "dependencies": {},

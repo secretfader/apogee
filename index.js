@@ -1,30 +1,20 @@
 exports.config = function (options) {
-  return function (req, res, next) {
-    options = options || {};
-
-    options.header = options.header || 'X-API-Version';
-    options.default = options.default || '1';
-
-    req.apogee = options;
-
-    next();
-  };
+  exports.configuration = options || {};
 };
-
 
 exports.limit = function (version) {
   return function (req, res, next) {
     var header;
 
-    res.header(req.apogee.header, version);
+    res.header(exports.configuration.header, version);
 
-    if (req.header(req.apogee.header)) {
-      header = req.header(req.apogee.header);
+    if (req.header(exports.configuration.header)) {
+      header = req.header(exports.configuration.header);
     }
 
     if (header && (version === header)) {
       return next();
-    } else if (!header && (version === req.apogee.default)) {
+    } else if (!header && (version === exports.configuration.default)) {
       return next();
     }
 

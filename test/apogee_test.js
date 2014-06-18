@@ -6,7 +6,7 @@ var apogee		= require('../')
 describe('API Versioning', function () {
 	beforeEach(function () {
 		this.app = express();
-		this.app.use(apogee.config({ header: 'x-apogee-version', default: '1' }));
+		apogee.config({ header: 'x-apogee-version', default: '1' });
 		this.app.use(require('errorhandler')());
 	});
 
