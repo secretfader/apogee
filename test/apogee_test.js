@@ -16,7 +16,7 @@ describe('Configuration', function () {
 describe('API Versioning', function () {
 	beforeEach(function () {
 		this.app = express();
-		apogee.config({ header: 'x-apogee-version', default: '1' });
+		apogee.configure({ header: 'x-apogee-version', default: '1' });
 		this.app.use(require('errorhandler')());
 	});
 
@@ -78,7 +78,7 @@ describe('API Versioning', function () {
 
 	it('should respond with 404 Not Found if no matching version is found, and no default exists', function (done) {
 		var app = express();
-		apogee.config({ header: 'x-apogee-version' });
+		apogee.configure({ header: 'x-apogee-version' });
 		app.route('/widgets').all(apogee.limit('v2')).get(function (req, res) {
 			res.json({ message: 'v2' });
 		});
