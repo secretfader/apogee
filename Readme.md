@@ -1,5 +1,7 @@
 # Apogee
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nicholaswyoung/apogee.svg)](https://greenkeeper.io/)
+
 You've built this fantastic API-driven application, hooked it into a fantastic [Angular](http://angularjs.org) front-end, and you're finally ready to rock. Not so fast.
 
 What if you want to slowly roll out new features, or change the content that's delivered at different endpoints? Never fear: building a versioned API on top of Express is easy with Apogee.
