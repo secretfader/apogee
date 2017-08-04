@@ -10,14 +10,14 @@
   "repository": "git://github.com/originalmachine/apogee.git",
   "main": "index.js",
   "dependencies": {
-    "lodash": "^2.4.1"
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
+    "chai": "^4.1.0",
     "errorhandler": "^1.0.2",
     "express": "^4.4.3",
-    "mocha": "^1.20.1",
-    "supertest": "^0.13.0"
+    "mocha": "^3.5.0",
+    "supertest": "^3.0.0"
   },
   "scripts": {
     "test": "make test"
